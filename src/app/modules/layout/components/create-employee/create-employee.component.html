@@ -1,0 +1,219 @@
+<form [formGroup]="employeeForm" class="col-12 my-3" (ngSubmit)="submitForm()">
+    <h4 class="m-2">Add Emplyee Details:</h4>
+    <div class="row justify-content-between my-3 mx-0 flex-wrap">
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Select Emploee Role</mat-label>
+                <mat-select formControlName="roleId">
+                    @for (Role of RolesData; track Role) {
+                    <mat-option [value]="Role.roleId">{{Role.role}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>User Name</mat-label>
+                <input matInput formControlName="userName">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Employee Code</mat-label>
+                <input matInput formControlName="empCode">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Employee Name</mat-label>
+                <input matInput formControlName="empName">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Employee Email</mat-label>
+                <input type="email" formControlName="empEmailId" matInput placeholder="Ex. pat@example.com">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Emploee Designation</mat-label>
+                <mat-select formControlName="empDesignationId">
+                    @for (Desig of DesignationData; track Desig) {
+                    <mat-option [value]="Desig.designationId">{{Desig.designation}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Employee Contact</mat-label>
+                <span matTextPrefix>+1 &nbsp;</span>
+                <input type="tel" formControlName="empContactNo" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Employee Alternate</mat-label>
+                <span matTextPrefix>+1 &nbsp;</span>
+                <input type="tel" formControlName="empAltContactNo" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Employee Personal Email</mat-label>
+                <input type="email" formControlName="empPersonalEmailId" matInput placeholder="Ex. pat@example.com">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Total Year Experience</mat-label>
+                <input matInput formControlName="empExpTotalYear" type="number" min="0" max="50">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Total Month Experience</mat-label>
+                <input matInput formControlName="empExpTotalMonth" type="number" min="1" max="12">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Employee Address</mat-label>
+                <textarea matInput formControlName="empAddress"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="empCity" placeholder="Ex. San Francisco">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>State</mat-label>
+                <input matInput formControlName="empState" placeholder="Ex. California">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Postal Code</mat-label>
+                <input matInput formControlName="empPinCode" #postalCode maxlength="5" placeholder="Ex. 94105">
+                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Personal Employee Address</mat-label>
+                <textarea matInput formControlName="empPerAddress"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Personal City</mat-label>
+                <input matInput formControlName="empPerCity" placeholder="Ex. San Francisco">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Personal State</mat-label>
+                <input matInput formControlName="empPerState" placeholder="Ex. California">
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field class="example-full-width">
+                <mat-label>Personal Postal Code</mat-label>
+                <input matInput formControlName="empPerPinCode" #postalCode maxlength="5" placeholder="Ex. 94105">
+                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="col-2 mx-3">
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()"
+                >
+                  <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+        </div>
+        <div class="m-2">
+            <h4 class="m-2">Employee Skils</h4>
+        </div>
+        <div formArrayName="ErpEmployeeSkills" class="col-12">
+            <div class="row" *ngFor="let skill of ErpEmployeeSkills.controls; let i = index" [formGroupName]="i">
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Skill</mat-label>
+                        <input matInput formControlName="skill">
+                    </mat-form-field>
+                </div>
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Total Year Experience</mat-label>
+                        <input matInput formControlName="totalYearExp" type="number" min="0" max="50">
+                    </mat-form-field>
+                </div>
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Last Version Used</mat-label>
+                        <input matInput formControlName="lastVersionUsed">
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-stroked-button type="button" (click)="addSkill()">Add Skill</button>
+        </div>
+        <div class="m-2">
+            <h4 class="m-2">Employee Experience</h4>
+        </div>
+        <div class="col-12" formArrayName="ErmEmpExperiences">
+            <div class="row" *ngFor="let exp of ErmEmpExperiences.controls; let i = index" [formGroupName]="i">
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Company Name</mat-label>
+                        <input matInput formControlName="companyName">
+                    </mat-form-field>
+                </div>
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Choose Start date</mat-label>
+                        <input matInput formControlName="startDate" [matDatepicker]="picker1">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Choose End date</mat-label>
+                        <input matInput formControlName="endDate" [matDatepicker]="picker2">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Designation</mat-label>
+                        <input matInput formControlName="designation">
+                    </mat-form-field>
+                </div>
+                <div class="col mx-1">
+                    <mat-form-field>
+                        <mat-label>Project Names</mat-label>
+                        <input matInput formControlName="projectsWorkedOn">
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-stroked-button type="button" (click)="addExperience()">Add Experience</button>
+        </div>
+        <div class="my-2">
+            <button class="my-3" mat-stroked-button >Create New Employee</button>
+        </div>
+    </div>
+</form>
