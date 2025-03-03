@@ -95,13 +95,12 @@ export class CreateEmployeeComponent implements OnInit {
 
   submitForm() {
     if (this.employeeForm.valid) {
-      this.empSrv.CreateNewEmp(this.employeeForm.value).subscribe((res:any)=> {
-        console.log(res);
-        if(res.result) {
-          this.router.navigate(['layout/dashboard/employee-detail']);
-        }
-      })
-      console.log('Form Submitted:', this.employeeForm.value);
+      this.empSrv.createNewEmployee(this.employeeForm.value).subscribe(res => {
+        console.log('Employee added:', res);
+        this.router.navigate(['layout/dashboard/employee-detail']);
+      }, error => {
+        console.error('Error adding employee:', error);
+      });
     } else {
       console.log('Form is invalid');
     }
